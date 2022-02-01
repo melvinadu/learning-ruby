@@ -27,26 +27,27 @@ class GoodDog
   end
 
   def change_info(n, h, w)
-    @name=n
-    @height=h
-    @weight=w
+    self.name = n
+    self.height = h
+    self.weight = w
   end
 
   def info
-    "#{name} weighs #{weight} and is #{height} tall."
+    "#{self.name} weighs #{self.weight} and is #{self.height} tall."
   end
+
+  def call_info
+    self.info
+  end
+
 end
 
-sparky = GoodDog.new("Sparky", "10")
+sparky = GoodDog.new('Sparky', '12 inches', '10 lbs')
 
-puts sparky.speak
+puts sparky.info
 
-fido = GoodDog.new("Fido", "9")
+sparky.change_info('Sparkboi', '24 inches', '45 lbs')
 
-puts fido.speak
+puts sparky.info
 
-puts sparky.name
-
-puts (sparky.name = "Sparkboi")
-
-puts (fido.height = "6")
+puts sparky.call_info
