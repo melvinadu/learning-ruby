@@ -56,10 +56,17 @@ module Mammal
     end
   end
 
-  
+  def self.some_out_of_place_method(num)
+    num ** 2
+  end
 end
 
-buddy = Mammal::Dog.new
-kitty = Mammal::Cat.new
-buddy.speak('Arf!')           # => "Arf!"
-kitty.say_name('kitty')       # => "kitty"
+# buddy = Mammal::Dog.new
+# kitty = Mammal::Cat.new
+# buddy.speak('Arf!')           # => "Arf!"
+# kitty.say_name('kitty')       # => "kitty"
+
+value = Mammal.some_out_of_place_method(4)
+# OR value = Mammal::some_out_of_place_method(4)
+
+p value
