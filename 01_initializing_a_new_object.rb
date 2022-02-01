@@ -40,6 +40,12 @@ class GoodDog
     self.info
   end
 
+  #creating class method, method that can be called on the class itself, without needing to instantiate any objects
+  
+  def self.what_am_i
+    "I'm a GoodDog class!"
+  end
+
 end
 
 sparky = GoodDog.new('Sparky', '12 inches', '10 lbs')
@@ -51,3 +57,6 @@ sparky.change_info('Sparkboi', '24 inches', '45 lbs')
 puts sparky.info
 
 puts sparky.call_info
+
+
+puts GoodDog.what_am_i # class methods are where we put functionality that does not pertain to individual objects
