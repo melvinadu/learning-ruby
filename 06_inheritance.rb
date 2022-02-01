@@ -1,22 +1,16 @@
 class Animal
-  def speak
-    "Hello!"
+  attr_accessor :name
+
+  def initialize(name)
+    @name = name
   end
 end
 
 class GoodDog < Animal
-  # attr_accessor :name
 
-  # def initialize(n)
-  #   self.name = n
-  # end
-
-  # def speak
-  #   "#{self.name} says arf!"
-  # end
-
-  def speak
-    super + " called from GoodDog class using super keyword to pull method from Animal superclass"
+  def initialize(color)
+    super(name)
+    @color = color
   end
 
 end
@@ -24,10 +18,32 @@ end
 class Cat < Animal
 end
 
-sparky = GoodDog.new
+bruno = GoodDog.new("brown") # => #<GoodDog:0x007fb40b1e6718 @color="brown", @name="brown">
 
-paws = Cat.new
 
-puts paws.speak
+#another example showing how to seperate the arguments being sent as a result of using super keyword
 
-puts sparky.speak
+class BadDog < Animal
+  def initialize(age, name)
+    super(name)
+    @age = age
+  end
+end
+
+BadDog.new(2, "bear")        # => #<BadDog:0x007fb40b2beb68 @age=2, @name="bear">
+
+#another example showing how to use super keyword if your superclass has no arguments
+
+class Animal
+  def initialize
+  end
+end
+
+class Bear < Animal
+  def initialize(color)
+    super()
+    @color = color
+  end
+end
+
+bear = Bear.new("black")        # => #<Bear:0x007fb40b1e6718 @color="black">
