@@ -1,51 +1,22 @@
+#This is an example of using a class variable and a class method to keep track of a class level detail that pertains only to the class, and not to individual objects.
+
 class GoodDog
-  # getter and setter functions can be refactored into this
-  attr_accessor :name, :height, :weight
-  
-  def initialize(n, h, w)
-    @name = n
-    @height = h
-    @weight = w
+  @@number_of_dogs = 0
+
+  ##this method gets called everytime to create a new instance of this class via the new method
+  def initialize
+    @@number_of_dogs += 1
   end
 
-  # # getter function
-  attr_reader :name
-  # def name
-  #   @name
-  # end
-
-  # # setter function
-  attr_writer :name
-  # def name=(n)
-  #   @name = n
-  #   "johnny" #trying to return something other than the value passed as an argument will always get ignored
-  # end
-
-  def speak 
-    # "#{@name} says Arf!"
-    "{name} says Arf!" #better practice to call the getter method instead of the instance variable
-  end
-
-  def change_info(n, h, w)
-    self.name = n
-    self.height = h
-    self.weight = w
-  end
-
-  def info
-    "#{self.name} weighs #{self.weight} and is #{self.height} tall."
-  end
-
-  def call_info
-    self.info
-  end
-
-  #creating class method, method that can be called on the class itself, without needing to instantiate any objects
-  
-  def self.what_am_i
-    "I'm a GoodDog class!"
+  def self.total_number_of_dogs
+    @@number_of_dogs
   end
 
 end
 
-puts GoodDog.what_am_i # class methods are where we put functionality that does not pertain to individual objects
+puts GoodDog.total_number_of_dogs
+
+dog1 = GoodDog.new
+dog2 = GoodDog.new
+
+puts GoodDog.total_number_of_dogs
